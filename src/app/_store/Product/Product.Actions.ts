@@ -8,6 +8,9 @@ export const LOAD_PRODUCT_FAIL = '[product] load product fail'
 export const GET_PRODUCT = '[product] get product'
 export const GET_PRODUCT_SUCCESS = '[product] get product success'
 
+export const GET_PRODUCT_BY_GTIN = '[product] get product'
+export const GET_PRODUCT_BY_GTIN_SUCCESS = '[product] get product success'
+
 export const ADD_PRODUCT = '[product] add product'
 export const ADD_PRODUCT_SUCCESS = '[product] add product success'
 
@@ -27,7 +30,8 @@ export const loadProductFail = createAction(LOAD_PRODUCT_FAIL, props<{ errormess
 export const getProduct = createAction(GET_PRODUCT, props<{ id: number }>())
 export const getProductSuccess = createAction(GET_PRODUCT_SUCCESS, props<{ obj: Product }>())
 
-export const getProductByGtin = createAction(GET_PRODUCT, props<{ gtin: number }>())
+export const getProductByGtin = createAction(GET_PRODUCT_BY_GTIN, props<{ gtin: number }>())
+export const getProductByGtinSuccess = createAction(GET_PRODUCT_BY_GTIN_SUCCESS, props<{ obj: Product }>())
 
 export const addProduct = createAction(ADD_PRODUCT, props<{ inputdata: Product }>())
 export const addProductSuccess = createAction(ADD_PRODUCT_SUCCESS)

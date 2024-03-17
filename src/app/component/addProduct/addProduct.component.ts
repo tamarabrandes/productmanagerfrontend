@@ -16,13 +16,14 @@ import { getEditdata } from '../../_store/Product/Product.Selector';
 })
 export class addProductComponent implements OnInit {
   editid = 0;
+  dummy = Number(1234);
   pagetitle = 'Add Product';
   constructor(private builder: FormBuilder, private store: Store, private actroute: ActivatedRoute) {
 
   }
   ngOnInit(): void {
     this.editid = Number(this.actroute.snapshot.paramMap.get('id'));
-    if (this.editid != null && this.editid != 0) {console.log(this.editid);
+    if (this.editid != null && this.editid != 0 && this.editid != undefined) {console.log(this.editid);
       this.pagetitle = 'Edit product';
       this.myform.controls.id.disable();
       this.myform.controls.productCode.disable();
@@ -32,40 +33,44 @@ export class addProductComponent implements OnInit {
       });
     }
   }
-  myform = this.builder.group({
-    id: this.builder.control(1234, Validators.required),
-    titel: this.builder.control('', Validators.required),
-    description: this.builder.control('', Validators.required),
-    gtin: this.builder.control(1234, Validators.required),
-    imageUrl: this.builder.control('', Validators.required),
-    productCode: this.builder.control('', Validators.required)
-  })
+myform = this.builder.group({
+    id: this.builder.control(this.dummy, Validators.required),
+    titel: this.builder.control("", Validators.required),
+    description: this.builder.control("", Validators.required),
+    gtin: this.builder.control(this.dummy, Validators.required),
+    imageUrl: this.builder.control("", Validators.required),
+    productCode: this.builder.control("", Validators.required),
+});
 
-  CheckGtin() {
-  const gtin = Number(this.myform.value.gtin);
-  this.store.dispatch(getProductByGtin({gtin:gtin}));
-  if (gtin != null && gtin != 0 && gtin != undefined) {
-        this.store.select(getEditdata).subscribe(item => {
-        this.myform.controls.titel.setValue(item.titel);
-       });
+ CheckGtin() {
+     const gtin = Number(this.myform.value.gtin);
+     if (gtin != null && gtin != 0 && gtin != undefined && gtin != this.dummy) {
+         this.store.dispatch(getProductByGtin({ gtin: gtin }));
+         this.store.select(getEditdata).subscribe(item => {
+             this.myform.controls.titel.setValue(item.titel);
+         });
      }
-  }
-  Saveproduct() {
-            const _obj: Product = {
-                id: this.myform.value.id as number,
-                titel: this.myform.value.titel as string,
-                description: this.myform.value.description as string,
-                gtin: this.myform.value.gtin as number,
-                imageUrl: this.myform.value.imageUrl as string,
-                productCode: this.myform.value.productCode as string
-            }
-            console.log(_obj);
-      if (this.editid != null && this.editid != 0) {
-          _obj.id = this.editid;
-          this.store.dispatch(updateProduct({inputdata: _obj}));
-      } else {
-          _obj.id = this.editid;
-          this.store.dispatch(addProduct({inputdata: _obj}));
-      }
-  }
+ }
+ Saveproduct() {
+     const _obj: Product = {
+         id: this.myform.value.id as number,
+         titel: this.myform.value.titel as string,
+         description: this.myform.value.description as string,
+         gtin: this.myform.value.gtin as number,
+         imageUrl: this.myform.value.imageUrl as string,
+         productCode: this.myform.value.productCode as string
+     }
+     console.log(_obj);
+     if (this.editid != null && this.editid != 0) {
+         _obj.id = this.editid;
+         this.store.dispatch(updateProduct({
+             inputdata: _obj
+         }));
+     } else {
+         _obj.id = this.editid;
+         this.store.dispatch(addProduct({
+             inputdata: _obj
+         }));
+     }
+ }
 }

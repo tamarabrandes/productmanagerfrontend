@@ -6,3 +6,4 @@ module.exports = [
    secure: false,
 }
 ];
+

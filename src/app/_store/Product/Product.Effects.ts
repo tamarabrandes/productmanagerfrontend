@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { MasterService } from "../../_service/master.service";
-import { addProduct, addProductSuccess, deleteProduct, deleteProductSuccess, emptyAction, getProduct, getProductByGtin, getProductSuccess, loadProduct, loadProductFail, loadProductSuccess, showAlert, updateProduct, updateProductSuccess } from "./Product.Actions";
+import { addProduct, addProductSuccess, deleteProduct, deleteProductSuccess, emptyAction, getProduct, getProductByGtin, getProductSuccess, getProductByGtinSuccess,  loadProduct, loadProductFail, loadProductSuccess, showAlert, updateProduct, updateProductSuccess } from "./Product.Actions";
 import { catchError, exhaustMap, map, of, switchMap } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar'
 

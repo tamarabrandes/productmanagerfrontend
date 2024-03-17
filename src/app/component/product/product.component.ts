@@ -19,7 +19,9 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   constructor(private store: Store,private router:Router) {
-
+ this.router.events.subscribe((e: any) => {
+      console.log('Router event:', e); this.router.navigateByUrl(e.url);
+    });
   }
   productdata!: Product[];
   datasource: any;
