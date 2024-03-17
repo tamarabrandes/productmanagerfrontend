@@ -1,8 +1,0 @@
-{
-  "/product/*": {
-    //"target": "http://localhost:5000",
-    "target": "http://productmanager-env.eba-g9wxi3vp.eu-central-1.elasticbeanstalk.com",
-    "secure": false,
-    "changeOrigin": true
-  }
-}

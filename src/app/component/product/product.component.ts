@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MasterService } from '../../_service/master.service';
 import { Product } from '../../../_model/Product';
 import { MaterialModule } from '../../../_module/Material.Module';
 import { MatTableDataSource } from '@angular/material/table';
@@ -24,7 +23,7 @@ export class ProductComponent implements OnInit {
   }
   productdata!: Product[];
   datasource: any;
-  displayColums: string[] = ['id', 'titel', 'description', 'gtin', 'action'];
+  displayColums: string[] = ['imageUrl', 'id', 'titel', 'description', 'gtin', 'action'];
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,14 +42,14 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  deleteproduct(code: string) {
+  deleteproduct(id: number) {
     if (confirm("do you want to remove?")) {
-      this.store.dispatch(deleteProduct({ code: code }));
+      this.store.dispatch(deleteProduct({ id: id }));
     }
   }
 
-  editproduct(code: string) {
-    this.router.navigateByUrl('/product/edit/'+code);
+  editproduct(id: number) {
+    this.router.navigateByUrl('/product/update/'+id);
   }
 
 }

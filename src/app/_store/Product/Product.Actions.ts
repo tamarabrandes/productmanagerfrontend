@@ -24,9 +24,10 @@ export const loadProduct = createAction(LOAD_PRODUCT)
 export const loadProductSuccess = createAction(LOAD_PRODUCT_SUCCESS, props<{ list: Product[] }>())
 export const loadProductFail = createAction(LOAD_PRODUCT_FAIL, props<{ errormessage: string }>())
 
-export const getProduct = createAction(GET_PRODUCT, props<{ code: string }>())
+export const getProduct = createAction(GET_PRODUCT, props<{ id: number }>())
 export const getProductSuccess = createAction(GET_PRODUCT_SUCCESS, props<{ obj: Product }>())
 
+export const getProductByGtin = createAction(GET_PRODUCT, props<{ gtin: number }>())
 
 export const addProduct = createAction(ADD_PRODUCT, props<{ inputdata: Product }>())
 export const addProductSuccess = createAction(ADD_PRODUCT_SUCCESS)
@@ -34,8 +35,8 @@ export const addProductSuccess = createAction(ADD_PRODUCT_SUCCESS)
 export const updateProduct = createAction(UPDATE_PRODUCT, props<{ inputdata: Product }>())
 export const updateProductSuccess = createAction(UPDATE_PRODUCT_SUCCESS)
 
-export const deleteProduct = createAction(DELETE_PRODUCT, props<{ code: string }>())
-export const deleteProductSuccess = createAction(DELETE_PRODUCT_SUCCESS, props<{ code: string }>())
+export const deleteProduct = createAction(DELETE_PRODUCT, props<{ id: number }>())
+export const deleteProductSuccess = createAction(DELETE_PRODUCT_SUCCESS, props<{ id: number }>())
 
 export const showAlert = createAction(SHOW_ALERT, props<{ message: string, resptype: string }>())
 export const emptyAction = createAction('emptyaction')

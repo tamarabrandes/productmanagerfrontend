@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Product } from '../../../_model/Product';
 import { Store } from '@ngrx/store';
-import { addProduct, getProduct, updateProduct } from '../../_store/Product/Product.Actions';
+import { addProduct, getProduct, updateProduct , getProductByGtin} from '../../_store/Product/Product.Actions';
 import { getEditdata } from '../../_store/Product/Product.Selector';
 
 @Component({
@@ -15,47 +15,57 @@ import { getEditdata } from '../../_store/Product/Product.Selector';
   styleUrl: './addProduct.component.css'
 })
 export class addProductComponent implements OnInit {
-  editcode = '';
+  editid = 0;
   pagetitle = 'Add Product';
   constructor(private builder: FormBuilder, private store: Store, private actroute: ActivatedRoute) {
 
   }
   ngOnInit(): void {
-    this.editcode = this.actroute.snapshot.paramMap.get('code') as string;
-    if (this.editcode != null && this.editcode != '') {
+    this.editid = Number(this.actroute.snapshot.paramMap.get('id'));
+    if (this.editid != null && this.editid != 0) {console.log(this.editid);
       this.pagetitle = 'Edit product';
-      this.myform.controls.code.disable();
-      this.store.dispatch(getProduct({code:this.editcode}))
+      this.myform.controls.id.disable();
+      this.myform.controls.productCode.disable();
+      this.store.dispatch(getProduct({id:this.editid}))
       this.store.select(getEditdata).subscribe(item => {
-        this.myform.setValue({ code: item.code, name: item.name, email: item.email, phone: item.phone });
+        this.myform.setValue({ id: item.id, titel: item.titel, description: item.description, gtin: item.gtin, imageUrl: item.imageUrl, productCode: item.productCode });
       });
     }
   }
   myform = this.builder.group({
-    code: this.builder.control('', Validators.required),
-    name: this.builder.control('', Validators.required),
-    email: this.builder.control('', Validators.required),
-    phone: this.builder.control('', Validators.required)
+    id: this.builder.control(1234, Validators.required),
+    titel: this.builder.control('', Validators.required),
+    description: this.builder.control('', Validators.required),
+    gtin: this.builder.control(1234, Validators.required),
+    imageUrl: this.builder.control('', Validators.required),
+    productCode: this.builder.control('', Validators.required)
   })
 
+  CheckGtin() {
+  const gtin = Number(this.myform.value.gtin);
+  this.store.dispatch(getProductByGtin({gtin:gtin}));
+  if (gtin != null && gtin != 0 && gtin != undefined) {
+        this.store.select(getEditdata).subscribe(item => {
+        this.myform.controls.titel.setValue(item.titel);
+       });
+     }
+  }
   Saveproduct() {
-    if (this.myform.valid) {
-      const _obj: Product = {
-        code: this.myform.value.code as string,
-        name: this.myform.value.name as string,
-        email: this.myform.value.email as string,
-        phone: this.myform.value.phone as string,
+            const _obj: Product = {
+                id: this.myform.value.id as number,
+                titel: this.myform.value.titel as string,
+                description: this.myform.value.description as string,
+                gtin: this.myform.value.gtin as number,
+                imageUrl: this.myform.value.imageUrl as string,
+                productCode: this.myform.value.productCode as string
+            }
+            console.log(_obj);
+      if (this.editid != null && this.editid != 0) {
+          _obj.id = this.editid;
+          this.store.dispatch(updateProduct({inputdata: _obj}));
+      } else {
+          _obj.id = this.editid;
+          this.store.dispatch(addProduct({inputdata: _obj}));
       }
-      console.log(_obj);
-      if(this.editcode!=null && this.editcode!=''){
-        _obj.code=this.editcode;
-        this.store.dispatch(updateProduct({ inputdata: _obj }));
-      }else{
-        this.store.dispatch(addProduct({ inputdata: _obj }));
-      }
-     
-
-    }
-
   }
 }
