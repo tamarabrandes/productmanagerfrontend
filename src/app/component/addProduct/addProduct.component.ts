@@ -33,6 +33,7 @@ export class addProductComponent implements OnInit {
       });
     }
   }
+
 myform = this.builder.group({
     id: this.builder.control(this.dummy, Validators.required),
     titel: this.builder.control("", Validators.required),
@@ -53,6 +54,7 @@ myform = this.builder.group({
          });
      }
  }
+
  Saveproduct() {
      const _obj: Product = {
          id: this.myform.value.id as number,

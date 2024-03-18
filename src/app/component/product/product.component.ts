@@ -30,6 +30,16 @@ export class ProductComponent implements OnInit {
     this.LoadInitialData();
   }
 
+  onRefresh() {
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){return false;};
+    let currentUrl = this.router.url + '?';
+    this.router.navigateByUrl(currentUrl)
+      .then(() => {
+        this.router.navigated = false;
+        this.router.navigate([this.router.url]);
+      });
+  }
+
   LoadInitialData() {
     this.store.dispatch(loadProduct());
     this.store.select(getProductList).subscribe(item => {
@@ -43,7 +53,7 @@ export class ProductComponent implements OnInit {
   deleteproduct(id: number) {
     if (confirm("do you want to remove?")) {
       this.store.dispatch(deleteProduct({ id: id }));
-    }
+    }this.onRefresh();
   }
 
   editproduct(id: number) {

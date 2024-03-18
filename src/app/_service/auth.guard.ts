@@ -8,10 +8,10 @@ export const authGuard: CanActivateFn = (route, state) => {
   let router=inject(Router);
   if(service.haveaccess()){
     return true;
-  }else{
+  } else {
     alert('unauthorized access');
     router.navigate(['/']);
     return false;
   }
-  
+
 };

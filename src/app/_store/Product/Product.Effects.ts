@@ -61,7 +61,7 @@ export class ProductEffects {
                     switchMap(() => {
                         return of(addProductSuccess(), showAlert({ message: 'Added successfully', resptype: 'pass' }))
                     }),
-                    catchError((_err) => of(addProductFail({ errormessage: _err.message }), showAlert({ message: _err.message, resptype: 'fail' })))
+                    catchError((_err) => of(addProductFail({ errormessage: _err.error.message }), showAlert({ message: _err.error.message, resptype: 'fail' })))
                 )
             })
         )
