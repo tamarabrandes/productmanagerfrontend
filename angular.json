@@ -57,17 +57,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "ProductManagerApp:build",
-            "proxyConfig": "src/proxy.conf.js"
+            "buildTarget": "ProductManagerApp:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "ProductManagerApp:build:production",
-              "proxyConfig": "src/proxy.conf.js"
+              "buildTarget": "ProductManagerApp:build:production"
             },
             "development": {
-              "buildTarget": "ProductManagerApp:build:development",
-              "proxyConfig": "src/proxy.conf.js"
+              "buildTarget": "ProductManagerApp:build:development"
             }
           },
           "defaultConfiguration": "development"

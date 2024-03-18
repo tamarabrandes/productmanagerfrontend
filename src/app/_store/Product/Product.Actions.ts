@@ -13,6 +13,7 @@ export const GET_PRODUCT_BY_GTIN_SUCCESS = '[product] get product success'
 
 export const ADD_PRODUCT = '[product] add product'
 export const ADD_PRODUCT_SUCCESS = '[product] add product success'
+export const ADD_PRODUCT_FAIL = '[product] add product fail'
 
 export const UPDATE_PRODUCT = '[product] update product'
 export const UPDATE_PRODUCT_SUCCESS = '[product] update product success'
@@ -35,6 +36,7 @@ export const getProductByGtinSuccess = createAction(GET_PRODUCT_BY_GTIN_SUCCESS,
 
 export const addProduct = createAction(ADD_PRODUCT, props<{ inputdata: Product }>())
 export const addProductSuccess = createAction(ADD_PRODUCT_SUCCESS)
+export const addProductFail = createAction(ADD_PRODUCT_FAIL, props<{ errormessage: string }>());
 
 export const updateProduct = createAction(UPDATE_PRODUCT, props<{ inputdata: Product }>())
 export const updateProductSuccess = createAction(UPDATE_PRODUCT_SUCCESS)

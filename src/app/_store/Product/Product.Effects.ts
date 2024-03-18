@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { MasterService } from "../../_service/master.service";
-import { addProduct, addProductSuccess, deleteProduct, deleteProductSuccess, emptyAction, getProduct, getProductByGtin, getProductSuccess, getProductByGtinSuccess,  loadProduct, loadProductFail, loadProductSuccess, showAlert, updateProduct, updateProductSuccess } from "./Product.Actions";
+import { addProduct, addProductSuccess, deleteProduct, deleteProductSuccess, emptyAction, getProduct, getProductByGtin, getProductSuccess, getProductByGtinSuccess,  loadProduct, loadProductFail, addProductFail, loadProductSuccess, showAlert, updateProduct, updateProductSuccess } from "./Product.Actions";
 import { catchError, exhaustMap, map, of, switchMap } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar'
 
@@ -52,6 +52,7 @@ export class ProductEffects {
         })
      )
    )
+
     _addProduct = createEffect(() =>
         this.action$.pipe(
             ofType(addProduct),
@@ -60,7 +61,7 @@ export class ProductEffects {
                     switchMap(() => {
                         return of(addProductSuccess(), showAlert({ message: 'Added successfully', resptype: 'pass' }))
                     }),
-                    catchError((_err) => of(showAlert({ message: 'Failed to add', resptype: 'fail' })))
+                    catchError((_err) => of(addProductFail({ errormessage: _err.message }), showAlert({ message: _err.message, resptype: 'fail' })))
                 )
             })
         )

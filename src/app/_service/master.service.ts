@@ -8,29 +8,29 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MasterService {
+  //private baseURL = 'http://productmanager-env.eba-g9wxi3vp.eu-central-1.elasticbeanstalk.com';
+  private baseURL = 'http://localhost:5000';
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) { }
 
   GetAllProduct() {
-    return this.http.get<Product[]>('/product/all');
+    return this.http.get<Product[]>(this.baseURL + '/product/all');
   }
   CreateProduct(product: Product) {
-    return this.http.post('/product/add', product);
+   return this.http.post(this.baseURL + '/product/add', product);
   }
   UpdateProduct(product: Product) {
-    return this.http.put('/product/update?id='+product.id, product);
+    return this.http.put(this.baseURL + '/product/update?id='+product.id, product);
   }
   DeleteProduct(id:number) { console.log('deleteProduct ' +id);
-    return this.http.delete('/product/delete/'+id);
+    return this.http.delete(this.baseURL + '/product/delete/'+id);
   }
   GetProductById(id:number) {
-    return this.http.get<Product>('/product/find/'+id);
+    return this.http.get<Product>(this.baseURL + '/product/find/'+id);
   }
-    GetProductByGtin(gtin:number) {
-      return this.http.get<Product>('/product/findgtin/'+gtin);
-    }
+  GetProductByGtin(gtin:number) {
+    return this.http.get<Product>(this.baseURL + '/product/findgtin/'+gtin);
+  }
   haveaccess() {
     return true;
   }

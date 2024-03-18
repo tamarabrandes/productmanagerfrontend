@@ -18,11 +18,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit {
-  constructor(private store: Store,private router:Router) {
- this.router.events.subscribe((e: any) => {
-      console.log('Router event:', e); this.router.navigateByUrl(e.url);
-    });
-  }
+  constructor(private store: Store,private router:Router) { }
   productdata!: Product[];
   datasource: any;
   displayColums: string[] = ['imageUrl', 'id', 'titel', 'description', 'gtin', 'action'];

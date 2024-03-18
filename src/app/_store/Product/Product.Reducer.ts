@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { productState } from "./Product.State";
-import { deleteProductSuccess, getProductSuccess, loadProductFail, loadProductSuccess } from "./Product.Actions";
+import { deleteProductSuccess, getProductSuccess, loadProductFail, loadProductSuccess, addProductFail } from "./Product.Actions";
 import { state } from "@angular/animations";
 
 
@@ -34,8 +34,14 @@ const _ProductReducer = createReducer(productState,
             list: [],
             errormessage: action.errormessage
         }
+    }),
+    on(addProductFail, (state, action) => {
+        return {
+            ...state,
+            list: [],
+            errormessage: action.errormessage
+        }
     })
-
 )
 
 

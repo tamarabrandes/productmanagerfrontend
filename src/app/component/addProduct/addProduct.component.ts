@@ -44,10 +44,12 @@ myform = this.builder.group({
 
  CheckGtin() {
      const gtin = Number(this.myform.value.gtin);
-     if (gtin != null && gtin != 0 && gtin != undefined && gtin != this.dummy) {
+     if (gtin != null && gtin != 0 && gtin != undefined) {
          this.store.dispatch(getProductByGtin({ gtin: gtin }));
          this.store.select(getEditdata).subscribe(item => {
+         if(this.myform.value.titel == '') {
              this.myform.controls.titel.setValue(item.titel);
+           }
          });
      }
  }
