@@ -1,0 +1,33 @@
+  {
+    "id": 1002,
+    "titel": "Baked Oats ",
+    "description": "Baked Oats Puppy Biscuits",
+    "gtin": 12345671,
+    "imageUrl": "https://dt-bowow.myshopify.com/cdn/shop/products/3.jpg?v=1706005245&width=713",
+    "productCode": "fe0e9553-3ceb-42be-8944-c49733b1d970"
+  },
+  {
+    "id": 1003,
+    "titel": "Salmon Flavoured",
+    "description": "Salmon Flavoured Food",
+    "gtin": 12345672,
+    "imageUrl": "https://dt-bowow.myshopify.com/cdn/shop/products/petshop20.jpg?v=1706005240&width=713",
+    "productCode": "e95a9e1d-3da2-417a-a263-9929be0ae335"
+  },
+  {
+    "id": 1004,
+    "titel": "Liver Chunks",
+    "description": "Liver Chunks Dog's Food",
+    "gtin": 12345673,
+    "imageUrl": "https://dt-bowow.myshopify.com/cdn/shop/products/petshop13.jpg?v=1706005205&width=1946",
+    "productCode": "97d0b3aa-2dc3-446c-90cc-52d9b52cc1b8"
+  },
+  {
+    "id": 1005,
+    "titel": "Chicken Flavoured",
+    "description": "Chicken Flavoured Chunks",
+    "gtin": 12345674,
+    "imageUrl": "https://dt-bowow.myshopify.com/cdn/shop/products/petshop11.jpg?v=1706005198&width=1946",
+    "productCode": "7ff17545-a40e-4bf2-88a8-9202817d8139"
+  }
+

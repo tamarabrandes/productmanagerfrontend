@@ -1,1 +1,32 @@
-<p>home works!</p>
+<div class="row header"><img class="foo-icon" src="/assets/header.png" width="180"/></div>
+
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation">
+  <a class="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Code on Github</a>
+</li>
+<li class="nav-item" role="presentation">
+  <a class="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab" aria-controls="simple-tabpanel-1" aria-selected="false">Swagger UI</a>
+</li>
+<li class="nav-item" role="presentation">
+  <a class="nav-link" id="simple-tab-2" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab" aria-controls="simple-tabpanel-2" aria-selected="false">Frontend</a>
+</li>
+
+
+</ul>
+<div class="tab-content pt-5" id="tab-content">
+  <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
+    <p><a href="https://github.com/tamarabrandes/productmanagerfrontend" target="_blank">Frontend</a> Angular Application</p>
+    <p><a href="https://github.com/tamarabrandes/productmanager" target="_blank">Backend</a> Spring Boot Application with MySQL Database</p>
+  </div>
+  <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
+    <p><a href="http://productmanager-env.eba-g9wxi3vp.eu-central-1.elasticbeanstalk.com/swagger-ui/index.html#/" target="_blank">Swagger UI</a> User: admin, Password: pass</p>
+    <p><a href="/assets/sampleData.json" target="_blank">Sample Data for JSON </a> </p>
+  </div>
+  <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
+    <p>For local tests please change baseURL to http://localhost:5000 in src/app/_service/master.service.ts</p>
+    <p>Run `npm install` to install modules</p>
+    <p>Run `npx kill-port 4200` to ensure Port 4200 is not already in use</p>
+    <p>Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`</p>
+  </div>
+</div>
+

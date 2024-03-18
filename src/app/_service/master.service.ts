@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MasterService {
-  //private baseURL = 'http://productmanager-env.eba-g9wxi3vp.eu-central-1.elasticbeanstalk.com';
-  private baseURL = 'http://localhost:5000';
+  private baseURL = 'http://productmanager-env.eba-g9wxi3vp.eu-central-1.elasticbeanstalk.com';
+  //private baseURL = 'http://localhost:5000';
 
   constructor(private http: HttpClient) { }
 
